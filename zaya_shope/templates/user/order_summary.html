@@ -1,0 +1,101 @@
+{% extends 'user/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container order_summary">
+  <div class="order_summary1 d-flex">
+    <div class="col-md-7  mt-4">
+      <div class="tracking-wrapper card p-4">
+        <h5 class="fw-semibold m-0">Order ID: #000000{{ order.id }}</h5>
+        <span class="fw-semibold">{{ order.created_at|date:"M d, Y" }}</span>
+        <p class="mt-1 m-0">
+                    <strong>Est. Delivery:</strong> {{ expected_delivery }}
+        </p>
+      </div>
+
+      <div class="tracking-wrapper card p-4 mt-2">
+          <div class="container py-4">
+
+            <h3 class="mb-4 text-center">Order Tracking</h3>
+
+            {% if order.status == "Cancelled" %}
+                <div class="alert alert-danger text-center fw-bold">
+                    ❌ This order has been Cancelled.
+                </div>
+            {% endif %}
+
+            <div class="tracking-container">
+                {% for step in steps %}
+                    <div class="tracking-step">
+                        <div class="circle 
+                            {% if forloop.counter0 <= current_index %} active {% endif %}">
+                        </div>
+                        <p class="step-label">{{ step }}</p>
+                    </div>
+                {% endfor %}
+                
+            </div>
+        </div>
+
+      </div> 
+      {% if item.status != "Cancelled" %}
+        <div class="tracking-wrapper justify-content-center align-items-center card p-4 mt-2 mb-2"> 
+            <a href="{% url 'invoice_pdf' order.id %}" class="btn btn-success w-50">
+                Download Invoice PDF
+            </a>
+        </div> 
+      {% endif %}
+    </div> 
+
+      
+    <div class="col-md-5">
+      <div class="card p-4 mb-4 mt-4 ms-4">
+         <h5 class="fw-bold mb-3">Delivery Address</h5>    
+         <div class="border-top ">
+           <div class="mt-4">
+            <p><strong></strong> {{ address.main_address }},{{ address.city }},{{address.state }}</p>
+            <p><strong></strong> {{address.pincode }},{{address.phone }}</p>
+           </div>
+         </div>
+         <h5 class="fw-bold mb-3 mt-4">Payment Mode</h5> 
+         <div class="border-top ">
+          <div class="mt-4">
+              <p><strong>Payment Method:</strong> {{ order.payment_method  }}</p>
+              <p><strong>Payment Status:</strong> {{ order.payment_status }}</p>
+          </div>
+
+         </div>
+         <h5 class="fw-bold mb-3 mt-4"> Ordere Items</h5>
+         <div class="border-top ">
+          {% for item in order_items %}
+            <div class="ms-3 d-flex ">
+              
+                <div class="card col-md-3 mt-4 border-0">
+                  <div class="border-0">
+                    <img
+                            src="{{ item.product.image.url }}"alt="{{ order_item.product.name }}"
+                            class="rounded-3 me-3"
+                            width="80"
+                            height="80"
+                            style="object-fit: cover;">
+                  </div>
+                </div>
+                <div class="card border-0 col-md-9 mt-4">
+                  <h5 class="ms-4"><strong>  {{ item.product.name }}</strong></h6>
+                  <h6 class="ms-4 text-muted"> {{ item.qnty }}Qnty</h6>
+                  
+                </div>
+              
+            </div>
+          {% endfor %}
+          </div>
+      </div>
+    </div>
+
+  </div>
+  
+</div>
+  
+
+{% endblock %}
+

@@ -1,0 +1,168 @@
+{% extends "user/base.html" %}
+{% load static %}
+{% block title %}Zay Shop - Product Listing Page {% endblock %}
+{% block content %}
+
+   
+<!--
+    
+TemplateMo 559 Zay Shop
+
+https://templatemo.com/tm-559-zay-shop
+
+-->
+
+
+
+    
+
+    <!-- Modal -->
+    <div class="modal fade bg-white" id="templatemo_search" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg" role="document">
+            <div class="w-100 pt-1 mb-5 text-right">
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <form action="" method="get" class="modal-content modal-body border-0 p-0">
+                <div class="input-group mb-2">
+                    <input type="text" class="form-control" id="inputModalSearch" name="q" placeholder="Search ...">
+                    <button type="submit" class="input-group-text bg-success text-light">
+                        <i class="fa fa-fw fa-search text-white"></i>
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+
+
+    <!-- Start Content -->
+    <div class="container py-5">
+        <div class="row">
+          
+           <div class="col-lg-3">
+                <h2 class="text-dark fw-bold mb-4">Categories</h2>
+                <ul class="list-unstyled">
+                {% for item in categ %}
+                        <li class="mb-3">
+                            <a href="?category={{ item.id }}"
+                            class="d-flex justify-content-between align-items-center px-3 py-2 rounded shadow-sm bg-white text-dark text-decoration-none category-link">
+                                <span>
+                                    <i class="fa fa-gem me-2 text-success"></i> 
+                                    {{ item.name }}
+                                </span>
+
+                                {% if request.GET.category == item.id|stringformat:"s" %}
+                                    <i class="fa fa-chevron-right text-success"></i>
+                                {% else %}
+                                    <i class="fa fa-chevron-right"></i>
+                                {% endif %}
+                            </a>
+                        </li>
+                    {% empty %}
+                        <li>No categories found.</li>
+                {% endfor %}
+                </ul>
+            </div>
+          
+
+             {% comment %} search  {% endcomment %}
+            <div class="col-lg-9">
+                <form method="GET" class="mb-4 d-flex" >
+                    {% csrf_token %}
+                    <input type="text"
+                        name="search"
+                        class="form-control"
+                        placeholder="Search by name, category,…"
+                        value="{{ request.GET.search }}">
+                    <button class="btn btn-success ms-2" type="submit">Search</button>
+                </form>
+                <div class="row">
+                    {% for item in products %}
+                        <div class="col-md-4 d-flex">
+                            <div class="card mb-4 product-wap rounded-0 d-flex flex-column w-100">
+                                
+                                <div class="card rounded-0">
+                                    <img class="cardimage rounded-0" src="{{ item.image.url }}">
+                                    <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+                                        <ul class="list-unstyled">
+                                             {% if item.id in wishlist_items %}
+                                                <a href="{% url 'remove_from_wishlist' item.id %}" class="btn btn-success text-danger">
+                                                    <i class="fas fa-heart"></i>
+                                                </a>
+                                            {% else %}
+                                                <a href="{% url 'add_to_wishlist' item.id %}" class="btn btn-success text-white mt-2">
+                                                    <i class="far fa-heart"></i>
+                                                </a>
+                                            {% endif %} 
+                                            <li><a class="btn btn-success text-white mt-2" href="{% url 'product_details' item.id %}"><i class="far fa-eye"></i></a></li>
+                                            <li><a class="btn btn-success text-white mt-2" href="{% url 'addto_cart' item.id %}"><i class="fas fa-cart-plus"></i></a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="card-body d-flex flex-column">
+                                    <ul class="list-unstyled d-flex justify-content-between align-items-center">
+                                        <li>
+                                            <a href="{% url 'product_details' item.id %}" class="h5 text-decoration-none text-dark fw-bold">
+                                                {{ item.name }}
+                                            </a>
+                                        </li>
+                                    </ul>
+
+                                    <p class="card-text text-muted small mt-2 flex-grow-1">
+                                        {{ item.description|truncatewords:12 }}
+                                    </p>
+
+                                    <p class="fw-semibold">
+                                        {% if item.discount and item.discount.active %}
+                                            <span class="text-muted text-decoration-line-through">₹{{ item.price }}</span>
+                                            <span class="text-dark fw-bold ms-2">₹{{ item.discount.discount_price }} ({{ item.discount.percentage }} % off)</span>
+                                        {% else %}
+                                            <span class="fw-bold">₹{{ item.price }}</span>
+                                        {% endif %}
+                                    </p>
+
+                                    <a href="{% url 'product_details' item.id %}" 
+                                    class="btn btn-sm rounded-pill mt-auto" 
+                                    style="background-color: #59ab6e !important; border-color: #56ae6c !important; color:white;">
+                                        View Details
+                                    </a>
+                                </div>
+
+                            </div>
+                        </div>
+                    {% endfor %}
+                </div>
+
+                <div div="row">
+                    <ul class="pagination pagination-lg justify-content-end">
+                        <li class="page-item disabled">
+                            <a class="page-link active rounded-0 mr-3 shadow-sm border-top-0 border-left-0" href="#" tabindex="-1">1</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link rounded-0 mr-3 shadow-sm border-top-0 border-left-0 text-dark" href="#">2</a>
+                        </li>
+                        <li class="page-item">
+                            <a class="page-link rounded-0 shadow-sm border-top-0 border-left-0 text-dark" href="#">3</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+    <!-- End Content -->
+
+    
+
+
+    
+
+    <!-- Start Script -->
+    <script src="assets/js/jquery-1.11.0.min.js"></script>
+    <script src="assets/js/jquery-migrate-1.2.1.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="assets/js/templatemo.js"></script>
+    <script src="assets/js/custom.js"></script>
+    <!-- End Script -->
+{% endblock %}

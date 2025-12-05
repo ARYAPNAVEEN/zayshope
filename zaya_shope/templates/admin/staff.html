@@ -1,0 +1,90 @@
+{% extends "admin/base2.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-lg border-0">
+        <div class="card-body">
+            <div class="categhead d-flex justify-content-between align-items-center mb-4" >
+                <h3 class="fw-bold mb-0 " > Staff List</h3>
+                <a href="{% url 'add_staff' %}"><button data-bs-toggle="modal"  class="btn " style="color:white;">Add Staff</button></a>
+            </div>
+            <div class="table-responsive">
+              <table class="table my-custom-table table-hover align-middle mb-0" style=" border-radius: 10px;">
+                <thead class="custom-thead " style="background-color: #04372c!important;" id="categhead">
+                   <tr class="text-center text-dark fw-bold">
+                    <th scope="col" style="width: 60px;">No</th>
+                    <th scope="col">Staff Name</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Phone</th>
+                    <th scope="col">Status</th>
+                    <th colspan="2">Actions</th>
+                  </tr>
+                </thead>
+                {% for user in staff_users %}
+                  <tr class="text-center">
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td class="fw-medium">{{ user.username }}</td>
+                    <td class="fw-medium">{{ user.email }}</td>
+                    <td class="fw-medium">{{ user.phone }}</td>
+                    <td>
+                        {% if not user.is_superuser %}
+                            <a href="{% url 'staff_status' user.id %}" class="text-decoration-none">
+                                {% if user.is_active %}
+                                    <button class="btn btn-outline-danger btn-sm">Block</button>
+                                {% else %}
+                                    <button class="btn btn-outline-success btn-sm">Activate</button>
+                                {% endif %}
+                            </a>
+                        {% else %}
+                            <span class="text-muted fw-bold">Admin</span>
+                        {% endif %}
+                    </td>
+                    <td class="fw-medium">
+                     
+                      {% if user.id %}
+                        
+                        <a href="{% url 'edit_staff' user.id %}" class="text-decoration-none"><button class="edit-btn" >
+                          ✏️ Edit
+                          </button>
+                        </a>
+                      {% endif %}
+                      {% comment %} <a href="{% url 'delete_staff' user.id %}" class="delete-btn  btn-sm" onclick="return confirm('Are you sure to delete?')">
+                        🗑️ Delete
+                      </a> {% endcomment %}
+                      <button type="button" class="delete-btn btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#delete_staff{{ user.id }}">
+                          🗑️Delete
+                      </button>
+                    </td>
+                  </tr>
+                {%  endfor  %}
+              </table> 
+            </div>
+        </div>
+    </div>
+</div>
+
+
+{% comment %} delete confirm modal {% endcomment %}
+{% for user in staff_users %}
+    <div class="modal fade" id="delete_staff{{ user.id }}" tabindex="-1" aria-labelledby="deleteModalLabel{{ user.id }}" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered">
+            <div class="modal-content">
+                <div class="modal-header bg-success text-white">
+                    <h5 class="modal-title" id="deleteModalLabel{{ user.id }}">Confirm Delete</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    Are you sure you want to delete <strong>{{ user.username }}</strong>?
+                </div>
+                <div class="modal-footer  ">
+                    <button type="button" class="btn bg-success text-white" data-bs-dismiss="modal">Cancel</button>
+                    <a href="{% url 'delete_staff' user.id %}" class="btn bg-success text-white">Yes, Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endfor %}
+
+
+{% endblock %}

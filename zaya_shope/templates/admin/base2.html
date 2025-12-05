@@ -1,0 +1,46 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+    {% block title %}<title>Zaya CRM Dashboard</title>{% endblock %}
+  
+
+    
+  <!-- Bootstrap 5 CSS CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;600&display=swap" rel="stylesheet">
+
+
+    <!-- Bootstrap 5 JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Then your custom CSS -->
+  <link href="{% static 'css/dashboard.css' %}" rel="stylesheet">
+
+</head>
+<body>
+  <div class="sidebar">
+    <h2>Zaya Admin</h2>
+    <a href="{% url 'dashboard' %}"><i class="fas fa-chart-line"></i> Dashboard</a>
+    <a href="{% url 'category' %}"><i class="fas fa-tags"></i> Categories</a>
+    <a href="{% url 'products' %}"><i class="fas fa-box"></i> Products</a>
+    <a href="{% url 'discount' %}"><i class="fas fa-box"></i> Discount</a>
+    {% if user.is_superuser %}
+        <a href="{% url 'staff' %}"><i class="fas fa-box"></i>Staff</a>      
+    {% endif %}
+    
+    <a href="{% url 'customers' %}"><i class="fas fa-box"></i>customers</a>
+    <a href="{% url 'logout' %}">
+      <button type="submit" class="btn btn-success ml-5" >Logout</button>
+    </a>
+
+
+  </div>
+    {% block content %}
+
+
+    {% endblock %}
+
+</body>
+</html>

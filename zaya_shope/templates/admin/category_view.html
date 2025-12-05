@@ -1,0 +1,53 @@
+{% extends "admin/base2.html" %}
+{% load static %}
+
+{% block content %}
+
+<div class="category-view-page container mt-5">
+
+    <!-- Header -->
+    <div class="d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold page-title">Category Details</h2>
+        <a href="{% url 'category' %}" class="btn btn-secondary">⬅ Back</a>
+    </div>
+
+    <!-- Category Card -->
+    <div class="card shadow-sm p-4 mb-4 category-card">
+        <div class="d-flex align-items-center">
+            <img src="{{ category.image.url }}" class="category-preview-img me-4">
+            <div>
+                <h3 class="fw-bold">{{ category.name }}</h3>
+                <p class="text-muted mt-2">Added on: {{ category.created_at|date:"d M Y" }}</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Products List Card -->
+    <div class="card shadow-sm p-4 product-list-card">
+
+        <h4 class="fw-bold mb-4">Products under this Category</h4>
+
+        {% if products %}
+            {% for i in products %}
+                <div class="d-flex align-items-center mb-4 single-product-box">
+
+                    <img src="{{ i.image.url }}" class="product-preview-img me-4">
+
+                    <div>
+                        <h4 class="fw-bold">{{ i.name }}</h4>
+                        <p><strong>Price:</strong> ₹{{ i.price }}</p>
+                        <p><strong>Stock:</strong> {{ i.stock }}</p>
+                        <p><strong>Description:</strong> {{ i.description }}</p>
+                    </div>
+
+                </div>
+            {% endfor %}
+        {% else %}
+            <p class="text-muted">No products available in this category.</p>
+        {% endif %}
+
+    </div>
+
+</div>
+
+{% endblock %}

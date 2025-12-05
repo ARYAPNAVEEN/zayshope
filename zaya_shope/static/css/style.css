@@ -1,0 +1,448 @@
+.login{
+    width: 100%;
+    height: 500px;
+    background-color: rgb(7, 121, 7);
+
+}
+.login .card{
+    width: 500px;
+    height: 400px;
+}
+.login .card label{
+    font-size: 20px;
+    font-weight: 400;
+}
+.login .card input{
+    width: 343px !important;
+
+}
+.login .card button{
+    background-color: green;
+}
+.password-box .toggle {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #444;
+    font-size: 20px;
+}
+.password-field {
+    position: relative;
+    display: inline-block;   
+    width: 100%;             
+}
+
+.password-field input {
+    width: 100%;
+    padding-right: 40px;     /* space for icon */
+    height: 40px;
+    font-size: 16px;
+}
+
+.password-field i {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #555;
+    font-size: 18px;
+}
+.input-wrapper {
+    position: relative;
+    width: 250px; /* change size if needed */
+}
+
+.input-wrapper input {
+    width: 100%;
+    padding: 10px;
+    padding-right: 40px; /* space for icon */
+    font-size: 16px;
+}
+
+.input-wrapper i {
+    position: absolute;
+    right: 12px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+    color: #666;
+    font-size: 18px;
+}
+/* modal login */
+.modal-content {
+    box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.2);
+}
+.modal-body button{
+    background-color: green;
+}  
+
+/* modal buttons */
+
+.navbar .btn{
+    margin-left: 20px;
+}
+#closebtn{
+    width: 37px;
+    height: 29px;
+    border: none;
+    color: lightgreen;
+    border: none;
+
+
+}
+#closebtns{
+    width: 37px;
+    height: 29px;
+    border: none;
+    background-color: transparent !important;
+    color: #59ab6e !important;
+}
+#main_img{
+    height: 500px !important;
+    width: 84% !important; 
+}
+
+.cardimage{
+    height: 250px !important;
+}
+
+
+
+
+/* Product Image Hover */
+#product-detail {
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  border-radius: 16px;
+}
+#product-detail:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+}
+
+/* Product Title */
+.card-body h1 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+
+/* Price Highlight */
+.card-body p.h3 {
+  color: #198754; /* emerald green */
+  font-weight: 600;
+}
+
+/* Buttons */
+.btn {
+  transition: all 0.3s ease-in-out;
+}
+.btn:hover {
+  transform: translateY(-2px);
+  opacity: 0.9;
+}
+.btn-dark {
+  background: #212529;
+  border: none;
+}
+.btn-success {
+  background: #198754;
+  border: none;
+}
+
+
+/* single product */
+
+  /* Product image zoom */
+  #product-detail {
+      transition: transform 0.3s ease-in-out !important;
+      cursor: zoom-in;
+  }
+  #product-detail:hover {
+      transform: scale(1.05);
+  }
+
+  /* Product title & price */
+  .product-title {
+      font-size: 28px;
+      font-weight: 700;
+      color: #222 !important;
+  }
+  .product-price {
+      font-size: 26px;
+      font-weight: 600;
+      color: #e63946 !important;
+      margin-bottom: 15px;
+  }
+
+  /* Buttons */
+  .btn-buy {
+      background: linear-gradient(90deg, #ff6a00, #ee0979) !important;
+      color: white;
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 30px;
+      transition: all 0.3s ease-in-out;
+  }
+  .btn-buy:hover {
+      background: linear-gradient(90deg, #ee0979, #ff6a00);
+      transform: translateY(-3px);
+  }
+  .btn-cart {
+      background: #28a745;
+      font-size: 18px;
+      font-weight: 600;
+      border-radius: 30px;
+      transition: all 0.3s ease-in-out;
+      color: white;
+  }
+  .btn-cart:hover {
+      background: #218838;
+      transform: translateY(-3px);
+  }
+
+  /* Related products hover */
+  .product-wap:hover img {
+      transform: scale(1.05);
+      transition: transform 0.3s ease-in-out;
+  }
+
+
+.order_summary{
+    background: #198754;
+    
+}
+/* order tracking */
+.tracking-wrapper {
+    padding: 10px;
+}
+
+.tracking-timeline {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    padding-left: 30px;
+}
+
+.tracking-step {
+    position: relative;
+    margin-bottom: 20px;
+}
+
+.track-circle {
+    width: 15px;
+    height: 15px;
+    background-color: #d3d3d3;
+    border-radius: 50%;
+    position: absolute;
+    left: -30px;
+    top: 0px;
+}
+
+.track-circle.active {
+    background-color: #4CAF50; /* green */
+}
+
+.track-line {
+    width: 2px;
+    height: 35px;
+    background-color: #d3d3d3;
+    position: absolute;
+    left: -23px;
+    top: 15px;
+}
+
+.track-line.completed {
+    background-color: #4CAF50;
+}
+
+.track-text {
+    font-size: 15px;
+    margin-left: 10px;
+    color: #555;
+}
+
+.track-text.completed {
+    color: #4CAF50;
+    font-weight: bold;
+}
+/* my_oder */
+
+.order-card {
+    background: #ffffff;
+    border-radius: 18px;
+    border: 1px solid #e6e6e6;
+    transition: all 0.2s ease-in-out;
+}
+
+.order-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+}
+
+.order-header {
+    background: #256828;
+    color: white;
+    border-radius: 18px 18px 0 0;
+}
+
+.order-img {
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border: 2px solid #f0f0f0;
+}
+
+.btn-outline-danger {
+    font-weight: 600;
+}
+
+p {
+    font-size: 15px;
+    color: #333;
+}
+
+/* tracking order */
+
+.tracking-container {
+    display: flex;
+    justify-content: space-between;
+    padding: 30px 10px;
+    position: relative;
+}
+
+.tracking-container::before {
+    content: "";
+    position: absolute;
+    top: 42px;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: #dcdcdc;
+    z-index: 0;
+}
+
+.tracking-step {
+    text-align: center;
+    width: 25%;
+    position: relative;
+    z-index: 1;
+}
+
+.circle {
+    width: 28px;
+    height: 28px;
+    background: #dcdcdc;
+    border-radius: 50%;
+    margin: auto;
+    border: 3px solid #bcbcbc;
+}
+
+.circle.active {
+    background: #28a745;
+    border-color: #1d7e34;
+}
+
+.step-label {
+    margin-top: 10px;
+    font-size: 14px;
+    text-transform: capitalize;
+}
+
+
+
+/* 404 page */
+
+.error-container {
+    text-align: center;
+    padding: 60px 20px;
+    align-items:center;
+    justify-content: center;
+}
+
+.error-title {
+    font-size: 100px;
+    font-weight: 800;
+    color: #28a745;
+    letter-spacing: -5px;
+    animation: float 2s ease-in-out infinite;
+}
+
+.error-subtitle {
+    font-size: 22px;
+    color: #444;
+    margin-top: -10px;
+}
+
+.error-text {
+    color: #777;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.btn-404 {
+    padding: 10px 24px;
+    font-size: 16px;
+    border-radius: 30px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+}
+
+.btn-404:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0px); }
+}.error-container {
+    text-align: center;
+    padding: 60px 20px;
+}
+
+.error-title {
+    font-size: 100px;
+    font-weight: 800;
+    color: #28a745;
+    letter-spacing: -5px;
+    animation: float 2s ease-in-out infinite;
+}
+
+.error-subtitle {
+    font-size: 22px;
+    color: #444;
+    margin-top: -10px;
+}
+
+.error-text {
+    color: #777;
+    font-size: 16px;
+    margin-bottom: 30px;
+}
+
+.btn-404 {
+    padding: 10px 24px;
+    font-size: 16px;
+    border-radius: 30px;
+    background-color: #28a745;
+    color: white;
+    text-decoration: none;
+    transition: 0.3s ease-in-out;
+}
+
+.btn-404:hover {
+    background-color: #218838;
+    transform: scale(1.05);
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0px); }
+}

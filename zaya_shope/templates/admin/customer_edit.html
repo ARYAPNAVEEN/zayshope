@@ -1,0 +1,31 @@
+{% extends "admin/base2.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5 d-flex justify-content-center">
+  <div class="card shadow-lg border-0 p-4" style="max-width: 600px; width: 100%; border-radius: 15px;">
+      <h3 class="fw-bold text-center mb-4">Edit customers details</h3>
+      <form action="{% url 'customer_edit' cust.id %}" method="POST" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="name" class="form-label fw-semibold"> Name</label>
+            <input type="text" class="form-control" name="name" value="{{ cust.username }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label fw-semibold"> email</label>
+            <input type="email" class="form-control"  name="email" value="{{ cust.email }}" required>
+        </div>
+        <div class="mb-3">
+            <label for="Phone" class="form-label fw-semibold">phone</label>
+            <input type="text" class="form-control" id="name" name="phone" value="{{ cust.phone }}" >
+        </div>
+        <div class="d-flex justify-content-between mt-4">
+            <a href="{% url 'customers' %}" class="btn btn-outline-secondary rounded-pill px-4">Cancel</a>
+            <button type="submit" class="btn btn-success rounded-pill px-4">Update </button>
+        </div>
+      </form>
+    </div>
+</div>
+
+
+{% endblock %}

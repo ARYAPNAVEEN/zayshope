@@ -1,0 +1,113 @@
+{% extends "user/base.html" %}
+{% load static %}
+{% block title %}Product Details{% endblock %}
+{% block content %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/slick.min.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/slick-theme.css' %}">
+<link rel="stylesheet" href="{% static 'css/css/style.css' %}">
+
+ 
+
+<section class="bg-light py-5">
+  <div class="container">
+    
+    <!-- Breadcrumb -->
+    
+
+    <div class="row">
+      <!-- Product Image -->
+      <div class="col-lg-5 mt-4">
+        <div class="card border-0 shadow-sm">
+          <img class="card-img img-fluid rounded"
+               src="{{ product.image.url }}"
+               alt="{{ product.name }}"
+               id="product-detail"
+               style="height: 323px; object-fit: cover;">
+        </div>
+      </div>
+      
+      <!-- Product Info -->
+      <div class="col-lg-7 mt-4">
+        <div class="card border-0 shadow-sm p-4">
+          <div class="card-body">
+            
+            <!-- Name & Price -->
+            <h1 class="product-title">{{ product.name }}</h1> 
+            {% if product.discount %}
+              <span class="text-muted text-decoration-line-through">₹{{ product.price }}</span>
+              <span class="text-dark fw-bold ms-2">₹{{ product.discount.discount_price }} ({{ product.discount.percentage }} % off)</span>
+            {% else %}
+            <span class="product-price">₹{{ product.price }}</span>
+            {% endif %}
+                <p class="text-muted">{{ product.description }}</p>
+              <div class="fw-bold mt-3" id="shipping" >
+                         <p class="text-muted" style="color:black !important;">Free shipping for orders above ₹999. Delivery within 3–5 days.</p>              
+              </div>           
+               <!-- Action Buttons -->
+            <div class="row pt-4">
+              <div class="col-md-6 d-grid mb-2">
+                  {% if product.id in wishlist_items %}
+                      <a href="{% url 'remove_from_wishlist' product.id %}" class="btn btn-success text-danger">
+                          <i class="fas fa-heart"></i>
+                      </a>
+                  {% else %}
+                      <a href="{% url 'add_to_wishlist' product.id %}" class="btn btn-success text-white mt-2">
+                          <i class="far fa-heart"></i>
+                      </a>
+                  {% endif %}
+              </div>
+              <div class="col-md-6 d-grid mb-2">
+                <a href="{% url 'addto_cart' product.id %}" class="btn btn-cart btn-lg shadow-sm">
+                  <i class="fa fa-shopping-cart me-2"></i> Add to Cart
+                </a>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- Related Products -->
+<section class="py-5">
+  <div class="container">
+    <div class="row text-left p-2 pb-3">
+      <h4>Related Products</h4>
+    </div>
+    <div id="carousel-related-product" class="d-flex flex-wrap">
+      
+      {% if related_products %}
+          {% for pdts in related_products %}
+            <div class="p-2 pb-3">
+              <div class="product-wap card rounded-0">
+                <div class="card rounded-0">
+                  <img class="card-img rounded-0 img-fluid" src="{{ pdts.image.url }}">
+                  <div class="card-img-overlay rounded-0 product-overlay d-flex align-items-center justify-content-center">
+                    <ul class="list-unstyled">
+                      <li><a class="btn btn-success text-white" href="{% url 'product_details' pdts.id %}"><i class="far fa-heart"></i></a></li>
+                      <li><a class="btn btn-success text-white mt-2" href="{% url 'product_details' pdts.id %}"><i class="far fa-eye"></i></a></li>
+                      <li><a class="btn btn-success text-white mt-2" href="{% url 'addto_cart' pdts.id %}"><i class="fas fa-cart-plus"></i></a></li>
+                    </ul>
+                  </div>
+                </div>
+                <div class="card-body text-center">
+                  <a href="{% url 'product_details' pdts.id %}" class="h6 text-decoration-none">{{ pdts.name }}</a>
+                  <p class="text-success fw-bold mt-2">₹{{ pdts.price }}</p>
+                </div>
+              </div>
+            </div>
+          {% endfor %}
+        {% else %}
+          <p class="text-success fw-bold mt-2">No related products now available</p>
+        {% endif %}
+    </div> 
+  </div>
+</section>
+
+
+
+{% endblock %}

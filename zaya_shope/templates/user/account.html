@@ -1,0 +1,101 @@
+{% extends 'user/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container d-flex py-4 bg-light " >
+    <div class="  card   border-0 shadow-sm rounded-4 mb-4 overflow-hidden order-card col-md-6 p-5">
+        <div class="col-md-12 justify-content-center align-items-center">
+            <div class="card border-0 shadow-sm justify-content-center align-items-center">
+                <div class="rounded-circle bg-success text-white d-flex justify-content-center align-items-center mt-3"
+                    style="width:98px; height:91px; font-size:50px !important; font-weight:bold !important">
+                    {{ user.username|first|upper }}
+                </div>
+                
+                <p class="mt-3 fw-semibold">{{user.username}}</p>
+            </div>
+             
+        </div>
+        <div class="d-flex col-md-12  ms-5 ">
+            <div class="col-md-2 mt-2 ms-5 justify-content-center align-items-center">
+              <img src="{% static 'img/img/order.png' %}" style="width:35px !important; height:42px !important;">
+            </div>
+             <div class="col-md-10">
+                <a class="text-decoration-none text-dark" href="{% url 'my_order' %}"><p class="mt-3 fw-semibold">My Orders</p></a>
+            
+            </div>
+        </div>
+        <div class="d-flex col-md-12 ms-5">
+            <div class="col-md-2 mt-2 ms-5 justify-content-center align-items-center">
+              <img src="{% static 'img/img/cart.png' %}" style="width:35px !important; height:42px !important;">
+            </div>
+             <div class="col-md-10">
+                <a class="text-decoration-none text-dark" href="{% url 'cart' %}"><p class="mt-3 fw-semibold">Cart</p></a>
+            </div>
+        </div>
+        <div class="d-flex col-md-12 ms-5">
+            <div class="col-md-2 mt-2 ms-5 justify-content-center align-items-center">
+              <img src="{% static 'img/img/hearts.png' %}" style="width:35px !important; height:42px !important;">
+            </div>
+             <div class="col-md-10">
+                <a class="text-decoration-none text-dark" href="{% url 'wishlist' %}"><p class="mt-3 fw-semibold">wishlist</p></a>
+            </div>
+        </div>
+        <div class="d-flex col-md-12 ms-5">
+            <div class="col-md-2 mt-2 ms-5 justify-content-center align-items-center">
+              <img src="{% static 'img/img/logout.png' %}" style="width:35px !important; height:42px !important;">
+            </div>
+             <div class="col-md-10">
+                <a class="text-decoration-none text-dark" href="{% url 'logout' %}"><p class="mt-3 fw-semibold">Logout</p></a>
+            </div>
+        </div>
+    </div>
+    <div class="  card   border-0 shadow-sm rounded-4 mb-4 overflow-hidden order-card col-md-6">
+        <div class="d-flex col-md-12">
+            <div class="col-md-6 mt-2 ms-5">
+                <h4>Personal Information</h4> 
+            </div>
+            <div class="col-md-6 mt-2 ">
+              <a href="" class="text-decoration-none">
+                <button type="submit" class="btn btn-success">Edit</button>
+              </a><a href="" class="text-decoration-none">
+                <button type="submit" class="btn btn-success" >Logout</button>
+              </a>
+
+            </div>
+        </div>
+        <div class="col-md-12 mt-2 ms-5 justify-content-center align-items-center ">
+            
+           
+           <div class="row  mt-3 col-md-10  border-0 shadow-sm pb-2">
+                <div class=" fw-semibold  ms-3">Full Name: {{ user.username }} </div>
+                <div class=" fw-semibold  ms-3">Email: {{ user.email}} </div>
+                <div class=" fw-semibold  ms-3">Phone: {{ user.phone }} </div>
+                <div class=" fw-semibold  ms-3">Joined: {{ user.date_joined|date:"M d, Y" }} </div>
+
+            </div>
+        </div>
+        <div class="col-md-12 mt-3 ms-5 justify-content-center align-items-center ">
+            <div class="row  mt-3 col-md-10  border-0 shadow-sm pb-2">
+                <div class="info-card">
+                    <span class="info-label">Default Address:</span>
+                    {% if address %}
+                        <div class=" fw-semibold  ms-3">Place: {{ user.main_address }} </div>
+                        <div class=" fw-semibold  ms-3">City: {{ user.city }} </div>
+                        <div class=" fw-semibold  ms-3">State: {{ user.state }} </div>
+                        <div class=" fw-semibold  ms-3">Pincode: {{ user.pincode }} </div>
+                    {% else %}
+                      <p>No address added yet</p>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+
+
+            
+            
+       
+        
+    </div>
+ 
+</div>
+{% endblock %}

@@ -1,0 +1,26 @@
+{% extends 'user/base.html' %}
+{% load static %}
+
+{% block content %}
+
+<div class="container error-container">
+    <div class="card shadow p-5 border-0 rounded-4">
+
+        <h1 class="error-title">404</h1>
+
+        <h3 class="error-subtitle">Oops! Page Not Found</h3>
+
+        <p class="error-text">
+            The page you are looking for might have been removed,<br>
+            had its name changed or is temporarily unavailable.
+        </p>
+
+        <a href="{% url 'index' %}" class="btn-404 w-50">
+            Go Back Home
+        </a>
+
+    </div>
+</div>
+
+{% endblock %}
+

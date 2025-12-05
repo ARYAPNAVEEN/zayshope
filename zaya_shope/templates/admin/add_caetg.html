@@ -1,0 +1,38 @@
+{% extends "admin/base2.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-5 d-flex justify-content-center">
+  <div class="card shadow-lg border-0 p-4" style="max-width: 500px; width: 100%; border-radius: 15px; height: max-content; ">
+    <h3 class="fw-bold text-center mb-4">Add Category</h3>
+    
+    <form method="POST" action="{% url add_categ %}" enctype="multipart/form-data">
+      {% csrf_token %}
+      
+      <!-- Name field -->
+      <div class="mb-3">
+        <label for="nameField" class="form-label fw-semibold">Category Name</label>
+        <input type="text" class="form-control" id="nameField" name="name" value="{{ categ.name }}" placeholder="Enter category name" required>
+      </div>
+
+      <!-- Image field -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Current Image</label><br>
+        {% if categ.image and categ.image.name %}
+          <img src="{{ categ.image.url }}" width="120" class="mb-2 rounded shadow-sm" required><br>
+        {% else %}
+          <span class="text-muted">No Image Available</span><br>
+        {% endif %}
+        <input type="file" class="form-control mt-2" name="image">
+      </div>
+
+      <!-- Buttons -->
+      <div class="d-flex justify-content-between mt-4">
+        <a href="{% url 'category' %}" class="btn btn-secondary">Cancel</a>
+        <button type="submit" class="btn btn-success px-4">Save Changes</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+{% endblock %}

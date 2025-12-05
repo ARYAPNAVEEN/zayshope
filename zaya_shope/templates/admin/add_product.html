@@ -1,0 +1,67 @@
+{% extends "admin/base2.html" %}
+{% load static %}
+{% block content %}
+
+<div class="container mt-5 d-flex justify-content-center">
+  <div class="card shadow-lg border-0 p-4" style="max-width: 700px; width: 100%; border-radius: 15px; height: max-content;">
+  <h3 class="fw-bold text-center mb-4">ADD NEW PRODUCT</h3>
+  <form method="POST" action="{% url 'addproduct' %}" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    <div class="row mb-3 align-items-center">
+      <label class="col-sm-3 col-form-label fw-semibold">Product Name</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" name="name" placeholder="Enter product name" required>
+      </div>
+    </div>
+
+    <div class="row mb-3 align-items-center">
+      <label class="col-sm-3 col-form-label fw-semibold">Product Price</label>
+      <div class="col-sm-9">
+        <input type="text" class="form-control" name="price" placeholder="Enter price" required>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label class="col-sm-3 col-form-label fw-semibold">Description</label>
+      <div class="col-sm-9">
+        <textarea class="form-control" name="description" placeholder="Product description" required></textarea>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label class="col-sm-3 col-form-label fw-semibold">Category</label>
+      <div class="col-sm-9">
+        <select name="category" class="form-select" required>
+          {% for i in categorys %}
+            <option value="{{ i.id }}">{{ i.name }}</option>
+          {% endfor %}
+        </select>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label class="col-sm-3 col-form-label fw-semibold">Image</label>
+      <div class="col-sm-9">
+        <input type="file" class="form-control" name="image" required>
+      </div>
+    </div>
+
+    <div class="row mb-3">
+      <label class="col-sm-3 col-form-label fw-semibold">Stock</label>
+      <div class="col-sm-9">
+        <input type="number" class="form-control" name="stock" min="0" required>
+      </div>
+    </div>
+
+    <div class="d-flex justify-content-between mt-4">
+      <a href="{% url 'products' %}" class="btn btn-secondary">Cancel</a>
+      <button type="submit" class="btn btn-success px-4">Add Product</button>
+    </div>
+  </form>
+</div>
+
+</div>
+
+
+{% endblock %}

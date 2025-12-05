@@ -1,0 +1,39 @@
+﻿{% extends "admin/base2.html" %}
+{% load static %}
+{% block content %}
+
+
+  
+
+  <div class="main">
+    <div class="topbar">
+      
+      <div class="profile">
+        <span>Welcome, Admin</span>
+        <img src="https://i.pravatar.cc/100" alt="Profile" />
+      </div>
+    </div>
+
+    <div class="dashboard mt-4">
+      <div class="card">
+        <h6>Total Revenue</h6>
+        <h3>₹{{ total_revenue }}</h3>
+        <span style="color: green;">+17% from last month</span>
+      </div>
+      <div class="card">
+         <h6>Total Sales</h6>
+            <h3>{{ total_sales }}</h3>
+      </div>
+      <div class="card">
+        <h6>Total Orders</h6>
+        <h3>{{ total_orders }}</h3>
+      </div>
+      <div class="card">
+        <h6>Total Customers</h6>
+          <h3>{{ total_customers }}</h3>
+      </div>
+      
+    </div>
+  </div>
+
+{% endblock %}

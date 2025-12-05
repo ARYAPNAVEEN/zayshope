@@ -1,0 +1,47 @@
+{% extends "admin/base2.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5 single-product-container">
+
+    <!-- Product Details Card -->
+    <div class="card shadow-sm p-4 mb-4 sp-card">
+
+        <!-- Title -->
+        <h2 class="fw-bold mb-4 text-center">{{ product.name }}</h2>
+
+        <div class="row align-items-center">
+
+            <!-- Product Main Image -->
+            <div class="col-md-5 text-center">
+                <img src="{{ product.image.url }}" class="sp-image-main shadow">
+            </div>
+
+            <!-- Details Box -->
+            <div class="col-md-7">
+                <h4 class="fw-bold mb-3">Product Information</h4>
+
+                <p class="sp-detail"><strong>Category:</strong> {{ product.category }}</p>
+                <p class="sp-detail"><strong>Price:</strong> ₹{{ product.price }}</p>
+                <p class="sp-detail"><strong>Stock:</strong> {{ product.stock }}</p>
+
+                <p class="sp-detail">
+                    <strong>Description:</strong><br>
+                    <span class="sp-description">
+                        {{ product.description }}
+                    </span>
+                </p>
+
+                <!-- Buttons -->
+                <div class="mt-4">
+                    <a href="{% url 'products' %}" class="sp-btn-back">⬅ Back</a>
+                    {% comment %} <a href="{% url 'update' product.id %}" class="sp-btn-edit">✏️ Edit Product</a> {% endcomment %}
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+{% endblock %}

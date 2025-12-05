@@ -1,0 +1,22 @@
+{% extends 'user/base.html' %}
+{% load static %}
+
+{% block content %}
+<div class="container py-5 d-flex justify-content-center align-items-center min-vh-75">
+  <div class="card shadow-lg border-0 rounded-4 p-5 text-center" style="max-width: 600px;">
+    
+    <h2 class="fw-bold text-success mb-3">Your Order Has Been Placed Successfully!</h2>
+    <p class="text-muted mb-4">Thank you for shopping with <span class="fw-semibold text-dark">Zaya Accessories</span> 💖<br>
+    You will receive a confirmation email with your order details shortly.</p>
+    
+    <div class="d-flex justify-content-center gap-3">
+      <a href="{% url 'shop' %}" class="btn btn-success px-4 py-2 rounded-pill fw-semibold">
+        Continue Shopping
+      </a>
+      <a href="{% url 'my_order' %}" class="btn btn-success px-4 py-2 rounded-pill fw-semibold">
+        My Orders
+      </a>
+    </div>
+  </div>
+</div>
+{% endblock %}

@@ -1,0 +1,78 @@
+{% extends "user/base.html" %}
+{% load static %}
+{% block title %}wishlist{% endblock %}
+{% block content %}
+
+<div class="container wishlist-container py-5">
+  <div class="text-center mb-5">
+    <h2 class="fw-bold" style="color: #099956ff;"> My Wishlist</h2>
+    
+  </div>
+
+  <div class="row">
+    {% for item in wishlist_items %}
+    <div class="col-lg-4 col-md-6 mb-4 d-flex">
+      <div class="card product-card w-100 d-flex flex-column">
+        <div class="position-relative">
+          <img class="cardimage" src="{{ item.product.image.url }}" alt="{{ item.product.name }}">
+          <div class="card-img-overlay product-overlay d-flex align-items-center justify-content-center">
+            <ul class="list-unstyled d-flex">
+              <a href="{% url 'remove_from_wishlist' item.product.id %}"
+                class="btn btn-danger position-absolute"
+                style="top: 10px; right: 10px; border-radius: 50%; padding: 6px 10px;">
+                <i class="fas fa-times"></i>
+              </a>
+              <li>
+                <a class="btn btn-light text-success" href="{% url 'product_details' item.product.id %}">
+                  <i class="far fa-eye"></i>
+                </a>
+              </li>
+              <li>
+                <a class="btn btn-light text-success" href="{% url 'addto_cart' item.product.id %}">
+                  <i class="fas fa-cart-plus"></i>
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="card-body d-flex flex-column">
+          <h5 class="fw-bold mb-2 text-truncate">
+            <a href="{% url 'product_details' item.product.id %}" class="text-decoration-none text-dark">
+              {{ item.product.name }}
+            </a>
+          </h5>
+
+          <p class="text-muted small flex-grow-1">
+            {{ item.product.description|truncatewords:12 }}
+          </p>
+
+          <div class="mb-2">
+            {% if item.discount and item.discount.active %}
+              <span class="text-muted text-decoration-line-through">₹{{ item.product.price }}</span>
+              <span class="text-dark fw-bold ms-2">₹{{ item.product.discount.discount_price }} ({{ item.discount.percentage }}% off)</span>
+            {% else %}
+              <span class="fw-bold text-success">₹{{ item.product.price }}</span>
+            {% endif %}
+          </div>
+
+          <a href="{% url 'product_details' item.product.id %}"
+             class="btn btn-success-custom rounded-pill mt-auto">
+            View Details
+          </a>
+        </div>
+      </div>
+    </div>
+    {% empty %}
+    <div class="wishlist-empty">
+      <img src="{% static 'images/empty_wishlist.svg' %}" alt="Empty Wishlist" style="max-width: 220px;" class="mb-3">
+      <p>Your wishlist is empty</p>
+      <a href="{% url 'shop' %}" class="btn btn-success-custom rounded-pill px-4 py-2">
+        Continue Shopping
+      </a>
+    </div>
+    {% endfor %}
+  </div>
+</div>
+
+{% endblock %}

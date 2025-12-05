@@ -1,0 +1,80 @@
+{% extends "admin/base2.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <!-- Page Header -->
+     <div class="producthead d-flex justify-content-between align-items-center mb-4">
+        <h2 class="fw-bold ">🛍️ Products</h2>
+        <a href="{% url 'addproduct' %}">
+            
+            <button  class="add-product-btn" data-bs-toggle="modal" data-bs-target="#addproductModal">
+                Add New Product
+            </button>
+        </a>
+
+       
+    </div>
+
+    <!-- Product Table Card -->
+    <div class="card shadow-lg border-0 rounded-4">
+        <div class="card-body p-4">
+            <div class="table-responsive">
+                <table class="table table-hover align-middle text-center mb-0">
+                    <thead class="table-light">
+                        <tr class="fw-bold">
+                            <th>Name</th>
+                            <th>Category</th>
+                            <th>Price</th>
+                            <th>Description</th>
+                            <th>Image</th>
+                            <th>Stock</th>
+                            <th colspan="3">Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for product in products %}
+                        <tr>
+                            <td>{{ product.name }}</td>
+                            <td>{{ product.category }}</td>
+                            <td>₹ {{ product.price }}</td>
+                            
+                            <td class="text-truncate" style="max-width: 200px;">{{ product.description }}</td>
+                            <td class="text-center align-middle">
+                                {% if product.image %}
+                                    <div class="d-flex justify-content-center">
+                                        <div class="image-wrapper">
+                                            <img src="{{ product.image.url }}" alt="{{ product.name }}" class="product-img">
+                                        </div>
+                                    </div>
+                                {% else %}
+                                    <span class="badge bg-secondary">No Image</span>
+                                {% endif %}
+                            </td>
+                            <td>{{ product.stock }}</td>
+                            
+                            <td>
+                                <a href="{% url 'single_product' product.id %}" class="text-decoration-none"><button class="edit-btn" >
+                                    view
+                                  </button>
+                                </a>
+                                <a href="{% url 'update' product.id %}" class="text-decoration-none"><button class="edit-btn" >✏️ Edit</button></a>
+                                <a href="{% url 'delete' product.id %}" class="text-decoration-none edit-btn" onclick="return confirm('Are you sure to delete this product?')">🗑️ Delete</a>
+                            </td>
+                        </tr>
+                        {% empty %}
+                        <tr>
+                            <td colspan="8" class="text-center text-muted">No products found.</td>
+                        </tr>
+                      {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+{% endblock %}

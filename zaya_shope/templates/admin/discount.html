@@ -1,0 +1,58 @@
+{% extends "admin/base2.html" %}
+{% load static %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="card shadow-lg border-0">
+        <div class="card-body">
+            <div class="categhead d-flex justify-content-between align-items-center mb-4" >
+                <h3 class="fw-bold mb-0 " > Discount List</h3>
+                <a href="{% url 'add_discount' %}" class="add-btn">Add Discount</a>
+            </div>
+             <div class="table-responsive">
+              <table class="table my-custom-table table-hover align-middle mb-0" style=" border-radius: 10px;">
+                <thead class="custom-thead " style="background-color: #04372c!important;" id="categhead">
+                  <tr class="text-center text-dark fw-bold">
+                    <th scope="col" style="width: 60px;">No</th>
+                    <th scope="col">Discount Name</th>
+                    <th scope="col">Product Name</th>
+                    <th scope="col">Discount Percentage</th>
+                    <th scope="col" style="width: 180px;">Discount Price</th>
+                    <th colspan="2">Actions</th>
+                  </tr>
+                </thead>
+                <tbody>
+                {% for i in discounts %}
+                  <tr class="text-center">
+                    <th scope="row">{{ forloop.counter }}</th>
+                    <td class="fw-medium">{{ i.name }}</td>
+                    <td class="fw-medium">{{ i.product }}</td>
+                    <td class="fw-medium">{{ i.percentage }}</td>
+                    <td class="fw-medium">{{ i.discount_price }}</td>
+                    
+                    <td >
+                     
+                      {% if i.id %}
+                        <!-- Edit Button -->
+                        <a href="{% url 'categ_edit' i.id %}" class="text-decoration-none"><button class="edit-btn" >
+                          ✏️ Edit
+                          </button>
+                        </a>
+                      {% endif %}
+                      <a href="{% url 'delete_categ' i.id %}" class="delete-btn  btn-sm text-decoration-none" onclick="return confirm('Are you sure to delete?')">
+                        🗑️ Delete
+                      </a>
+                    </td>
+                  </tr>
+                {% endfor %}
+                </tbody>
+              </table>
+            </div>
+        </div>
+    </div>
+</div> 
+  
+
+
+{% endblock %}
+

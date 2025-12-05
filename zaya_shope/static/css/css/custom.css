@@ -1,0 +1,382 @@
+
+/*=============================================================
+    Authour URI: www.binarycart.com
+    License: Commons Attribution 3.0
+
+    http://creativecommons.org/licenses/by/3.0/
+
+    100% To use For Personal And Commercial Use.
+    IN EXCHANGE JUST GIVE US CREDITS AND TELL YOUR FRIENDS ABOUT US
+   
+    ========================================================  */
+/*==============================================
+    GENERAL  STYLES    
+    =============================================*/
+body {
+    font-family: 'Open Sans', sans-serif;
+}
+
+ #wrapper {
+    width: 100%;
+    margin-top: 0px;
+}
+
+#page-wrapper {
+    padding: 15px 15px;
+    min-height: 600px;
+    background:#F3F3F3;
+   
+}
+#page-inner {
+    width:100%;
+    margin:10px 20px 10px 0px;
+    background-color:#fff!important;
+    padding:10px;
+    min-height:1200px;
+}
+
+.text-center {
+    text-align:center;
+}
+.user-image-back {
+    background-color:#8B7BFF;
+}
+h5,.h5 {
+    font-size: 14px;
+font-weight: 900;
+text-transform: uppercase;
+padding-bottom:20px;
+}
+/*==============================================
+    MENU STYLES    
+    =============================================*/
+
+
+.navbar-inverse .navbar-nav > li > a {
+color: #06F;
+}
+.navbar-inverse .navbar-nav > li > a:hover,.navbar-inverse .navbar-nav > li > a:focus {
+color: #06F;
+}
+.arrow {
+    float: right;
+}
+
+.fa.arrow:before {
+    content: "\f104";
+}
+
+.active > a > .fa.arrow:before {
+    content: "\f107";
+}
+
+
+.nav-second-level li,
+.nav-third-level li {
+    border-bottom: none !important;
+}
+
+.nav-second-level li a {
+    padding-left: 37px;
+}
+
+.nav-third-level li a {
+    padding-left: 55px;
+}
+.sidebar-collapse , .sidebar-collapse .nav{
+	background:none;
+}
+.sidebar-collapse .nav {
+	padding:0;
+}
+.sidebar-collapse .nav > li > a {
+background: #FFFFFF;
+text-shadow: none;
+color:#162b1b;
+}
+.sidebar-collapse > .nav > li > a {
+	padding:15px 10px;
+}
+.sidebar-collapse > .nav > li {
+	border-bottom: 1px solid rgba(240, 240, 240, 1) !important;
+}
+.sidebar-collapse .nav > li > a:hover,
+.sidebar-collapse .nav > li > a:focus {
+	
+	background:#F3F3F3;
+	outline:0;
+}
+.nav-second-level  > li:last-child > a:after,
+.nav-third-level  > li:last-child > a:after {
+	height:50%;
+}
+.nav-third-level > li > a:after,
+.nav-third-level > li > a:before  {
+	left:40px;
+}
+.navbar-side {
+	border:none;
+	background-color: #202020;
+	
+}
+.navbar-inverse {
+background-color: #f3f3f3;
+border-color: #D3D3D3;
+
+}
+
+.navbar-default {
+border:0px solid #DDDDDD;
+     
+}
+.navbar-default .navbar-toggle:hover, .navbar-default .navbar-toggle:focus {
+background-color: #B40101;
+}
+.navbar-default .navbar-toggle {
+border-color: #fff;
+}
+
+.navbar-default .navbar-toggle .icon-bar {
+background-color: #FFF;
+}
+.nav > li > a > i {
+    margin-right:10px;
+}
+.navbar-inverse .navbar-brand  {
+color: #000000;
+font-size: 25px;
+font-weight: 900;
+}
+.navbar-inverse .navbar-brand:hover,.navbar-inverse .navbar-brand:focus {
+    color: #000000;
+font-size: 25px;
+font-weight: 900;
+}
+.navbar-inverse .navbar-toggle {
+border-color: #8B7BFF;
+}
+
+.navbar-inverse .navbar-toggle:hover, .navbar-inverse .navbar-toggle:focus {
+background-color: #8B7BFF;
+}
+.adjust-nav {
+    padding-left:20px;padding-right:20px;
+}
+.navbar-toggle {
+    background-color: #8B7BFF;
+}
+
+/*==============================================
+    DASHBOARD STYLES     
+    =============================================*/
+
+.bg-color-blue {
+background-color: #9A86EB;
+color: #fff;
+}
+
+.no-boder {
+border: 1px solid #f3f3f3;
+}
+.back-footer-blue {
+background-color: #7479E6;
+border-top: 0px solid #fff;
+}
+
+/*==============================================
+    BOOTSTRAP STYLE CHANGES     
+    =============================================*/
+.nav-tabs > li > a {
+     -webkit-border-radius: 0px 0px 0px 0px;
+-moz-border-radius: 0px 0px 0px 0px;
+border-radius: 0px 0px 0px 0px;
+}
+
+.panel-group .panel {
+border-radius: 0px;
+  -webkit-border-radius:  0px;
+-moz-border-radius: 0px;
+}
+.panel {
+    border-radius: 0px;
+  -webkit-border-radius:  0px;
+-moz-border-radius: 0px;
+}
+.panel-heading {
+ border-top-left-radius: 0px; 
+ border-top-right-radius: 0px; 
+}
+.btn {
+     border-radius: 0px;
+  -webkit-border-radius:  0px;
+-moz-border-radius: 0px;
+}
+.progress {
+     border-radius: 0px;
+  -webkit-border-radius:  0px;
+-moz-border-radius: 0px;
+}
+/*==============================================
+    MEDIA QUERIES     
+    =============================================*/
+ 
+ @media(min-width:768px) {
+     #page-wrapper{
+            margin: 0 0 0 260px;
+            padding: 15px 30px;
+            /* min-height: 1200px; */
+            height: max-content !important;
+		
+    }
+	
+	
+    .navbar-side {
+        z-index: 1;
+        position: absolute;
+        width: 260px;
+    }
+
+   .navbar {
+ border-radius: 0px; 
+}
+   
+}
+/* product list admin */
+
+
+.add{
+    text-align: left;
+    margin-top: 15px;
+    justify-content: center;
+    align-items: center;
+    justify-items: center;
+    text-align: left;
+}
+.add button{
+    width: 137px;
+    height: 34px;
+    background-color: #56ae6c;
+    border: none;
+    outline: none;
+    color: white;
+}
+#pedit{
+    border: none;
+    width: 65px;
+    height: 37px;
+    background-color: #56ae6c;
+    color: white;
+    font-size: 17px;
+    margin-left: 20px;
+}
+#pdelete{
+    border: none;
+    width: 65px;
+    height: 37px;
+    background-color: #56ae6c;
+    color: white;
+    font-size: 17px;
+    margin-left: 20px;
+}
+.navimg{
+    background-color: #56ae6c;
+}
+.dproduct{
+    width: 100%;
+    height: max-content;
+    border-collapse: collapse;
+    font-family: Arial, sans-serif;
+}
+.dproduct table {
+    width: 100%;
+    background-color: #D3D3D3;
+}
+.dproduct table th,td{
+    border: 1px solid #ccc;
+    padding: 12px;
+    text-align: center;
+}
+
+
+
+
+/* add_product */
+
+
+.addpdt{
+    width:100%;
+    margin:10px 20px 10px 0px;
+    background-color:#fff!important;
+    padding:10px;
+    min-height:1200px;
+}
+
+
+.inner_addpdt{
+    padding: 15px 15px;
+    min-height: 600px;
+    background:#F3F3F3;
+   
+}
+
+
+.edit {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    margin: 0 auto;
+    margin-top: 40px;
+}
+
+.edit h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    font-size: 28px;
+    color: #56ae6c;
+    font-weight: bold;
+}
+
+form label {
+    font-weight: 600;
+    display: block;
+    margin-bottom: 8px;
+    color: #444;
+}
+
+form input[type="text"],
+form input[type="number"],
+form input[type="file"],
+form select,
+form textarea {
+    width: 100%;
+    padding: 10px 15px;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    font-size: 16px;
+}
+
+form textarea {
+    resize: vertical;
+}
+
+form input[type="submit"] {
+    background-color: #56ae6c;
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    font-size: 16px;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form input[type="submit"]:hover {
+    background-color: #56ae6c;
+}
+
+#addbtn{
+    margin-left: 200px;
+}
