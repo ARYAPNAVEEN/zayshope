@@ -129,13 +129,12 @@ USE_TZ = True
 # Static files settings
 STATIC_URL = '/static/'
 
-# Folder where static files are stored during development
+STATIC_ROOT = BASE_DIR / 'staticfiles'   # For Render collectstatic
+
 STATICFILES_DIRS = [
-    os.path.join(BASE_DIR, 'static'),
+    BASE_DIR / 'static',                 # Your project static folder
 ]
 
-# # Folder where static files are collected for production
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')  # Used when running collectstatic
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')  # This should be MEDIA_ROOT
